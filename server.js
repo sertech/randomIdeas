@@ -1,3 +1,6 @@
+// for static folder
+const path = require('path');
+
 const express = require('express');
 
 // to be able to use .env file we have to require it
@@ -13,6 +16,9 @@ connectDB();
 // we have to initialize this variable
 // this will be the server itself
 const app = express();
+
+// static folder - this will make our public folder static
+app.use(express.static(path.join(__dirname, 'public')));
 
 // body parser middleware to access the body of a POST request
 app.use(express.json());
