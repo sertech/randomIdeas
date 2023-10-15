@@ -13,6 +13,18 @@ class IdeaForm {
     async handleSubmit(e) {
         e.preventDefault();
 
+        if (
+            !this._form.elements.text.value ||
+            !this._form.elements.tag.value ||
+            !this._form.elements.username.value
+        ) {
+            alert('please enter all fields');
+            return;
+        }
+
+        // save user to local storage
+        localStorage.setItem('username', this._form.elements.username.value);
+
         // in this._form.elements.text.value, text is the name of the element
         const idea = {
             text: this._form.elements.text.value,
@@ -32,6 +44,8 @@ class IdeaForm {
         this._form.elements.tag.value = '';
         this._form.elements.username.value = '';
 
+        this.render();
+
         // since the modal and the form are separate elements
         // to be able to close the modal from this component
         // we have to dispatch a custom event which is a method of the DOM
@@ -44,7 +58,11 @@ class IdeaForm {
         <form id="idea-form">
             <div class="form-control">
                 <label for="idea-text">Enter a Username</label>
-                <input type="text" name="username" id="username" />
+                <input type="text" name="username" id="username" value="${
+                    localStorage.getItem('username')
+                        ? localStorage.getItem('username')
+                        : ''
+                }"/>
             </div>
             <div class="form-control">
                 <label for="idea-text">What's Your Idea?</label>
