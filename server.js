@@ -1,6 +1,9 @@
 // for static folder
 const path = require('path');
 
+// to enable cors
+const cors = require('cors');
+
 const express = require('express');
 
 // to be able to use .env file we have to require it
@@ -23,6 +26,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 // body parser middleware to access the body of a POST request
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// cors middleware
+// app.use(cors()); // this enable making a request from anywhere
+app.use(cors({
+    origin:['http://localhost:5000','http://localhost:3000'],
+    credentials:true
+}))
 
 // lets create a route
 app.get('/', (req, res) => {

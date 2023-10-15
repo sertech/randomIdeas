@@ -13,4 +13,3 @@ ideaForm.render();
 
 // initialize the ideaList
 const ideaList = new IdeaList();
-ideaList.render();
