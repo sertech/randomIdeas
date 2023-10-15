@@ -1,22 +1,7 @@
 class IdeaList {
     constructor() {
         this._ideaListEl = document.querySelector('#idea-list');
-        this._ideas = [
-            {
-                id: 1,
-                text: 'idea 1',
-                tag: 'Business',
-                username: 'john',
-                date: '02/01/2023',
-            },
-            {
-                id: 2,
-                text: 'idea 2',
-                tag: 'Technology',
-                username: 'jill',
-                date: '02/01/2023',
-            },
-        ];
+        this._ideas = [];
         this._validTags = new Set();
         this._validTags.add('technology');
         this._validTags.add('software');
